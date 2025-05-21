@@ -22,7 +22,8 @@ pip install --upgrade pip
 python -m venv comfy_env
 source comfy_env/bin/activate
 
-pip install comfy-cli
+python -m pip install comfy-cli
+python -m pip install --upgrade pip
 
 COMFY_UI_HOME="$HOME/comfy"
 

@@ -5,12 +5,16 @@ set -e
 # ======================================================================================
 # Install ComfyUI
 # ======================================================================================
-python3 -m venv comfy_env
-source ./comfy_env/bin/activate
+python -m venv .venv
+source ./.venv/bin/activate
 
-pip install comfy-cli
-comfy --skip-prompt install --m-series
+python -m pip install comfy-cli
+python -m pip install --upgrade pip
 
+comfy --workspace="./comfyui" --skip-prompt install --m-series
+comfy update all
+comfy tracking disable
+comfy env
 # ======================================================================================
 # Start ComfyUI
 # ======================================================================================
