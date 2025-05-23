@@ -12,7 +12,12 @@ TEXT_ENCODERS="$MODELS/text_encoders/hunyuan"
 CHECKPOINTS="$MODELS/diffusion_models/hunyuan"
 CLIP_VISION="$MODELS/loras/clip_vision/hunyuan"
 
-CUSTOM_NODES="$COMFY_HOME/custom_nodes"
+
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Total size ~143.7 GB
+# ──────────────────────────────────────────────────────────────────────────────────────────────────────
+echo "13.2 + 25.6 + 25.6 + 25.6 + 25.6 + 653/1024 + 1.15 + 9.09 + 16.1 + 493/1024 + 649/1024" | bc -l
+
 
 # ──────────────────────────────────────────────────────────────────────────────────────────────────────
 # Checkpoints
@@ -73,17 +78,3 @@ wget -c "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/s
 # 649 MB
 wget -c "https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/clip_vision/llava_llama3_vision.safetensors" -O "$CLIP_VISION/llava_llama3_vision.safetensors"
 
-
-# ──────────────────────────────────────────────────────────────────────────────────────────────────────
-# ComfyUI Nodes
-# ──────────────────────────────────────────────────────────────────────────────────────────────────────
-git clone https://github.com/kijai/ComfyUI-HunyuanVideoWrapper.git "$CUSTOM_NODES/ComfyUI-HunyuanVideoWrapper"
-
-pip install --upgrade insightface onnxruntime torch torchvision accelerate diffusers transformers peft bitsandbytes
-pip install -r "$CUSTOM_NODES/ComfyUI-HunyuanVideoWrapper/requirements.txt"
-
-
-# ──────────────────────────────────────────────────────────────────────────────────────────────────────
-# Enhance-A-Video Helper - Slight quality boost, zero mem overhead
-# ──────────────────────────────────────────────────────────────────────────────────────────────────────
-# git clone https://github.com/logtd/ComfyUI-HunyuanLoom.git "$CUSTOM_NODES/ComfyUI-HunyuanLoom"
