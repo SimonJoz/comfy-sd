@@ -27,7 +27,7 @@ variable "ebs_volume_size" {
 }
 
 variable "open_ports" {
-  type        = list(number)
-  default     = [8188]
+  type        = list(string)
+  default     = ["8188", "22"]
   description = "List of TCP ports to open to the public (restricted to your IP)."
 }
